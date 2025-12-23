@@ -91,7 +91,7 @@
         FROM bookings b
         WHERE b.vehicle_id = v.vehicle_id
     )
-    order by v.vehicle_id
+    ORDER BY v.vehicle_id
 ```
 
 **Output**:
@@ -106,10 +106,10 @@
 **Requirement**: Retrieve all available vehicles of a specific type (e.g. cars).
 
 ```
-    select *
+    SELECT *
     FROM vehicles
     WHERE status = 'available' AND type = :type_name
-    order by vehicle_id
+    ORDER BY vehicle_id
 ```
 
 **Output**:
