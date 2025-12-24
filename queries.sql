@@ -7,8 +7,8 @@ SELECT
     b.end_date,
     b.status
 FROM bookings b
-         INNER JOIN users u ON b.user_id = u.user_id
-         INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id
+INNER JOIN users u ON b.user_id = u.user_id
+INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id
 ORDER BY b.booking_id
 
 --2
@@ -30,7 +30,7 @@ ORDER BY vehicle_id
 --4
 SELECT v.name vehicle_name, COUNT(b.booking_id) total_bookings
 FROM bookings b
-         INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id
+INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id
 GROUP BY v.name
 HAVING COUNT(b.booking_id) > 2
 
