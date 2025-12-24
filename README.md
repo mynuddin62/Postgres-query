@@ -68,6 +68,8 @@
     INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id
     ORDER BY b.booking_id
 ```
+**Explanation**: Here we join three tables with inner join so that all matched users and vehicles will come in the output, meaning if there are any users who have no bookings, then those rows will be removed in the output. The same goes for vehicles.   
+
 
 **Output**:
 | booking_id | customer_name | vehicle_name | start_date | end_date | status |
@@ -94,6 +96,8 @@
     ORDER BY v.vehicle_id
 ```
 
+**Explanation**: We are collecting rows from the vehicle table but only those vehicles that have no booking. For each vehicle in the vehicle table, it executes a subquery, and if anything is found, it immediately stops and gives that row of vehicle. If nothing is found, it ignores that vehicle row. 
+
 **Output**:
 | vehicle_id | name | type | model | registration_number | rental_price | status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -112,6 +116,8 @@
     ORDER BY vehicle_id
 ```
 
+**Explanation**: We are filtering those vehicles that have status 'available' and type = : type_name is a parameterized condition, where type_name will be provided at runtime, by which it filters that specific types. Here we pass for car. 
+
 **Output**:
 | vehicle_id | name | type | model | registration_number | rental_price | status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -129,6 +135,7 @@
     GROUP BY v.name
     HAVING COUNT(b.booking_id) > 2
 ```
+**Explanation**: Here we first joined the bookings and vehicles tables and then grouped them by vehicle name and from those individual groups we are applying the condition that those have more than 2 bookings. Finally, we are taking name from vehicle and counting how many bookings of that vehicle.      
 
 **Output**:
 | vehicle_name | total_bookings |
